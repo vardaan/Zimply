@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
 
 
         viewpager.setAdapter(new HomeAdapter(getSupportFragmentManager(), pagerItems));
-        tablayout.post(() -> tablayout.setupWithViewPager(viewpager));
+        tablayout.setupWithViewPager(viewpager);
     }
 
     @Override
