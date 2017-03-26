@@ -41,18 +41,19 @@ public class ProductFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
         ButterKnife.bind(this, view);
         final int space = (int) Utils.dpToPixel(16, getActivity());
-        productRv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        final int spanCount = 2;
+        productRv.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
         productRv.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
                 final int position = parent.getChildAdapterPosition(view);
-                if (position % 2 == 0) {
+                if (position % spanCount == 0) {
                     outRect.left = space;
-                    outRect.right = space / 2;
+                    outRect.right = space / spanCount;
                 }
                 else {
-                    outRect.left = space / 2;
+                    outRect.left = space / spanCount;
                     outRect.right = space;
                 }
                 outRect.top = space;
