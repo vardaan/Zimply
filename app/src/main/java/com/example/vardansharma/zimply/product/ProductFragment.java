@@ -40,6 +40,11 @@ public class ProductFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
         ButterKnife.bind(this, view);
+        initUI();
+        return view;
+    }
+
+    private void initUI() {
         final int space = (int) Utils.dpToPixel(16, getActivity());
         final int spanCount = 2;
         productRv.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
@@ -60,33 +65,7 @@ public class ProductFragment extends BaseFragment {
             }
         });
         productRv.setAdapter(new ProductAdapter());
-        return view;
     }
 
-    class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            final View view
-                    = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
-            return new ProductVH(view);
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return 100;
-        }
-
-        class ProductVH extends RecyclerView.ViewHolder {
-
-            public ProductVH(View itemView) {
-                super(itemView);
-            }
-        }
-    }
 
 }
